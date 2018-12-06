@@ -16,14 +16,23 @@ class StationWorker extends Human
         return self::$workerContract;
     }
 
-    public function takeOrder($order)
+    public function getWork($order)
     {
         $this->vehicleInWork[] = $order;
     }
 
-    public function returnOrder()
+    public function returnRepairedVehicle()
     {
         return array_shift($this->vehicleInWork);
+    }
+
+    public function isBusy()
+    {
+        if (count($this->vehicleInWork) > 0) {
+            return true;
+        }
+
+        return false;
     }
 
 }

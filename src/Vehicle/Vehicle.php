@@ -31,7 +31,6 @@ class Vehicle
     public function getNumber()
     {
         return $this->number;
-
     }
 
     /**
@@ -40,6 +39,26 @@ class Vehicle
     public function setNumber($number): void
     {
         $this->number = $number;
+    }
+
+    /**
+     * Get CarBrand.
+     *
+     * @return string
+     */
+    public function getCarBrand(): string
+    {
+        return $this->carBrand;
+    }
+
+    /**
+     * Get Color.
+     *
+     * @return string
+     */
+    public function getColor(): string
+    {
+        return $this->color;
     }
 
 }

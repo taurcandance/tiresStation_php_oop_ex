@@ -9,7 +9,7 @@ use Vehicle\Vehicle;
 class Client extends Human
 {
 
-    private $vehicle;
+    public $vehicle;
     private $money;
     private $replacementTires;
     private $numberCar;
@@ -24,8 +24,7 @@ class Client extends Human
         float $money,
         string $numberCar,
         array $repTires = null
-    )
-    {
+    ) {
         parent::__construct($name, $sex, $age, $height, $weight);
         $this->vehicle          = $vehicle;
         $this->money            = $money;
@@ -50,9 +49,12 @@ class Client extends Human
         }
     }
 
-    public function getVehicle()
+    public function pickUpTheCar()
     {
+        $auto          = $this->vehicle;
         $this->vehicle = null;
+
+        return $auto;
     }
 
     public function setVehicle(Vehicle $vehicle)

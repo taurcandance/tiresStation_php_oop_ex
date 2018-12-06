@@ -5,7 +5,7 @@ namespace BaseTire;
 
 abstract class BaseTire
 {
-    private $materials = 'rubber';
+    private $materials = '';
     private $brand;
     private $season;
     private $size;
@@ -26,9 +26,9 @@ abstract class BaseTire
         string $brand,
         string $season,
         string $size,
+        string $materials = null,
         bool $spikes = null,
-        float $weight = null,
-        string $materials = null
+        float $weight = null
     ) {
         $this->materials = $materials;
         $this->brand     = $brand;
