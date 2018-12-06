@@ -38,7 +38,7 @@ class StationManager extends Human
     {
         $order = new Order($client, 'accepted');
         $order->setOrderManager($this->getName());
-        $this->ordersQueue->push($order);
+        $this->ordersQueue->enqueue($order);
         $this->vehicleList[$order->getOrderNumber()] = $client->pickUpTheCar(); /* машина как объект, на площадку */
     }
 
@@ -48,7 +48,7 @@ class StationManager extends Human
         if ($worker->isBusy()) {
             throw new Exception('all workers is busy');
         }
-        $order   = $this->ordersQueue->pop();
+        $order   = $this->ordersQueue->dequeue();
         $vehicle = $this->vehicleList[$order->getOrderNumber()];
         $worker->getWork($vehicle);
         $this->vehicleList[$order->getOrderNumber()] = null;
@@ -88,8 +88,6 @@ class StationManager extends Human
                     if ($client->getName() == $order->getClientName()) {
                         $client->setVehicle($this->vehicleList[$order->getOrderNumber()]);
                         $this->vehicleList[$order->getOrderNumber()] = null;
-                    } else {
-                        return;
                     }
                 }
             }

@@ -9,7 +9,7 @@ use Vehicle\Vehicle;
 class Client extends Human
 {
 
-    public $vehicle;
+    public  $vehicle;
     private $money;
     private $replacementTires;
     private $numberCar;

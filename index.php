@@ -7,30 +7,59 @@ use Tire\Tire;
 use StationManager\StationManager;
 use StationWorker\StationWorker;
 
-$tire    = new Tire('michelin', 'winter', '205-65-15', 'gum', true, 10.2);
-$auto    = new Vehicle('bmw', '205-65-15', 'blue', $tire);
-$client  = new Client('Ded', 'male', 35, 187.5, 80, $auto, 300, 'AE6464-4');
 $worker  = new StationWorker('Yura', 'male', 55, 189.5, 120);
 $manager = new StationManager('Egor', 'male', 33, 190, 78);
 
+$tire1    = new Tire('michelin', 'winter', '205-65-15', 'gum', true, 10.2);
+$auto1    = new Vehicle('TOYOTA', '205-65-15', 'blue', $tire1);
+$client1  = new Client('Ded', 'male', 35, 187.5, 80, $auto1, 560, 'KH6464-1');
 
 $tire2   = new Tire('hankook', 'winter', '205-65-15', 'gum', true, 10.2);
-$auto2   = new Vehicle('Toyota', '205-65-15', 'blue', $tire2);
-$client2 = new Client('Man', 'male', 35, 187.5, 80, $auto2, 300, 'AE6464-4');
+$auto2   = new Vehicle('AUDI', '205-65-15', 'blue', $tire2);
+$client2 = new Client('Man', 'male', 35, 187.5, 80, $auto2, 277, 'AH1347-3');
+
+$tire3   = new Tire('belshina', 'winter', '215-60-17', 'gum', true, 10.2);
+$auto3   = new Vehicle('GEELY', '205-65-15', 'grey', $tire3);
+$client3 = new Client('Vova', 'male', 34, 187.5, 98.5, $auto3, 3000, 'HB5566-4');
 
 
-$manager->createOrder($client);
-$manager->giveTaskToWorker($worker);
-$manager->returnVehicleAfterRepairFromWorker($worker);
-$manager->returnVehicleToClients([$client]);
+$tire4   = new Tire('belshina', 'winter', '185-60-15', 'gum', true, 10.2);
+$auto4   = new Vehicle('FORD', '205-65-15', 'grey', $tire4);
+$client4 = new Client('Philip', 'male', 34, 187.5, 98.5, $auto4, 2000, 'DB1266-5');
+
+$tire5   = new Tire('belshina', 'winter', '215-60-18', 'gum', true, 10.2);
+$auto5   = new Vehicle('LADA', '205-60-16', 'yellow', $tire5);
+$client5 = new Client('Igor', 'male', 55, 187.5, 98.5, $auto5, 4000, 'HB5526-4');
 
 
+$manager->createOrder($client1);
 $manager->createOrder($client2);
+$manager->createOrder($client3);
+$manager->createOrder($client4);
+$manager->createOrder($client5);
+
+
 $manager->giveTaskToWorker($worker);
 $manager->returnVehicleAfterRepairFromWorker($worker);
-$manager->returnVehicleToClients([$client2]);
+$manager->giveTaskToWorker($worker);
+$manager->returnVehicleAfterRepairFromWorker($worker);
+$manager->giveTaskToWorker($worker);
+$manager->returnVehicleAfterRepairFromWorker($worker);
+$manager->giveTaskToWorker($worker);
+$manager->returnVehicleAfterRepairFromWorker($worker);
+
+
+$manager->returnVehicleToClients([$client1, $client2, $client3, $client4, $client5]);
 
 var_dump($manager);
 var_dump($worker);
-var_dump($client);
-var_dump($client2);
+if($client1->vehicle){
+    var_dump($client1->vehicle->getNumber());}else{var_dump($client1->vehicle);}
+if($client2->vehicle){
+    var_dump($client2->vehicle->getNumber());}else{var_dump($client2->vehicle);}
+if($client3->vehicle){
+    var_dump($client3->vehicle->getNumber());}else{var_dump($client3->vehicle);}
+if($client4->vehicle){
+var_dump($client4->vehicle->getNumber());}else{var_dump($client5->vehicle);}
+if($client5->vehicle){
+    var_dump($client5->vehicle->getNumber());}else{var_dump($client5->vehicle);}
