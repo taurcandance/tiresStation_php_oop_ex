@@ -45,8 +45,12 @@ class StationManager extends Human
     /**/
     public function giveTaskToWorker(StationWorker $worker)
     {
-        if ($worker->isBusy()) {
-            throw new Exception('all workers is busy');
+        try {
+            if ($worker->isBusy()) {
+                throw new Exception('all workers is busy');
+            }
+        } catch (Exception $exception) {
+            echo 'Выброшено исключение -', $exception->getMessage(), "\n";
         }
         $order   = $this->ordersQueue->dequeue();
         $vehicle = $this->vehicleList[$order->getOrderNumber()];
@@ -60,7 +64,7 @@ class StationManager extends Human
     /**/
     public function returnVehicleAfterRepairFromWorker(StationWorker $worker)
     {
-
+        $currOrder = null;
         foreach ($this->ordersArchive as $order) {
             if ($order->getStatus() == 'inProgress' && $order->getWorker() == $worker->getName()) {
                 $currOrder = $order;
@@ -78,6 +82,7 @@ class StationManager extends Human
                 if ($order->getStatus() == 'completed') {
                     return true;
                 }
+                return false;
             }
         );
 

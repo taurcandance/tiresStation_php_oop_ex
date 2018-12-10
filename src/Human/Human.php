@@ -3,13 +3,17 @@
 namespace Human;
 
 
-abstract class Human
+use IHuman\IHuman;
+
+abstract class Human implements IHuman
 {
     private $name;
     private $sex;
     private $age;
     private $height;
     private $weight;
+    private $energy = 50;
+    private $isClearHands = false;
 
 
     public function __construct(string $name, string $sex, int $age, float $height, float $weight)
@@ -29,7 +33,6 @@ abstract class Human
     public function getName(): string
     {
         return $this->name;
-
     }
 
     /**
@@ -48,7 +51,6 @@ abstract class Human
     public function getSex(): string
     {
         return $this->sex;
-
     }
 
     /**
@@ -59,7 +61,6 @@ abstract class Human
     public function getAge(): int
     {
         return $this->age;
-
     }
 
     /**
@@ -70,7 +71,6 @@ abstract class Human
     public function getHeight(): float
     {
         return $this->height;
-
     }
 
     /**
@@ -81,7 +81,38 @@ abstract class Human
     public function getWeight(): float
     {
         return $this->weight;
-
     }
 
+    public function toEat($food)
+    {
+        if ($this->isClearHands) {
+            $this->energy += 40;
+        } else {
+            $this->energy += 30;
+        }
+    }
+
+    public function washClear($water = null)
+    {
+        return $this->isClearHands = true;
+    }
+
+    public function toDrink($drink)
+    {
+        if ($this->isClearHands) {
+            $this->energy += 15;
+        } else {
+            $this->energy += 5;
+        }
+    }
+
+    /**
+     * Get Energy.
+     *
+     * @return int
+     */
+    public function getEnergy(): int
+    {
+        return $this->energy;
+    }
 }

@@ -8,7 +8,6 @@ use Vehicle\Vehicle;
 
 class Client extends Human
 {
-
     public  $vehicle;
     private $money;
     private $replacementTires;
@@ -70,6 +69,5 @@ class Client extends Human
     public function getNumberCar(): string
     {
         return $this->numberCar;
-
     }
 }
