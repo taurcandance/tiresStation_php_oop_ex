@@ -1,7 +1,7 @@
 <?php
 
 
-namespace IHuman;
+namespace IEating;
 
 
 interface IEating

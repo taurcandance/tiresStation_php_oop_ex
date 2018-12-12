@@ -2,7 +2,7 @@
 
 namespace DinnerRoom;
 
-use IHuman\IEating;
+use IEating\IEating;
 
 
 class DinnerRoom

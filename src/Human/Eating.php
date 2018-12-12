@@ -3,7 +3,7 @@
 namespace Human;
 
 
-use IHuman\IEating;
+use IEating\IEating;
 use IPayment\IPayment;
 
 abstract class Eating implements IEating, IPayment
