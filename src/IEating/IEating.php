@@ -4,7 +4,7 @@
 namespace IHuman;
 
 
-interface IHuman
+interface IEating
 {
     public function toEat($food);
     public function toDrink($drink);

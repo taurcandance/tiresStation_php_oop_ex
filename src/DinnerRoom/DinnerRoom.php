@@ -2,7 +2,7 @@
 
 namespace DinnerRoom;
 
-use IHuman\IHuman;
+use IHuman\IEating;
 
 
 class DinnerRoom
@@ -18,7 +18,7 @@ class DinnerRoom
         $this->products = $products;
     }
 
-    public function feed(IHuman $dinnerClient)
+    public function feed(IEating $dinnerClient)
     {
         if (is_null($this->food)) {
             try {
@@ -31,7 +31,7 @@ class DinnerRoom
         }
     }
 
-    public function giveADrink(IHuman $dinnerClient)
+    public function giveADrink(IEating $dinnerClient)
     {
         $dinnerClient->toDrink(array_pop($this->drinks));
     }
@@ -41,7 +41,7 @@ class DinnerRoom
         return $this->food = $this->products;
     }
 
-    public function washAndClear(IHuman $dinnerClient)
+    public function washAndClear(IEating $dinnerClient)
     {
         $dinnerClient->washClear();
     }

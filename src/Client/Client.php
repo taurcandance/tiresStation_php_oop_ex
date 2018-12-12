@@ -3,10 +3,10 @@
 namespace Client;
 
 
-use Human\Human;
+use Human\Eating;
 use Vehicle\Vehicle;
 
-class Client extends Human
+class Client extends Eating
 {
     public  $vehicle;
     private $money;

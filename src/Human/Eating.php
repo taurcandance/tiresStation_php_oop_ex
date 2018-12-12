@@ -3,9 +3,10 @@
 namespace Human;
 
 
-use IHuman\IHuman;
+use IHuman\IEating;
+use IPayment\IPayment;
 
-abstract class Human implements IHuman
+abstract class Eating implements IEating, IPayment
 {
     private $name;
     private $sex;
@@ -115,4 +116,16 @@ abstract class Human implements IHuman
     {
         return $this->energy;
     }
+
+    public function payment($seller, $buyer, $cost, $product = null)
+    {
+        // TODO: Implement payment() method.
+    }
+
+    public function checkPossibilityOfBuying($buyer, $cost)
+    {
+        // TODO: Implement checkPossibilityOfBuying() method.
+    }
+
+
 }
