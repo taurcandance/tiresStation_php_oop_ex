@@ -4,13 +4,13 @@ namespace StationManager;
 
 
 use Client\Client;
-use Human\Eating;
+use Human\Human;
 use Order\Order;
 use StationWorker\StationWorker;
 use Exception;
 use SplQueue;
 
-class StationManager extends Eating
+class StationManager extends Human
 {
     private $managerContract = true;
     private $ordersQueue;           /* необработанные заказы в очередь */

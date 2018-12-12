@@ -6,7 +6,7 @@ namespace Human;
 use IEating\IEating;
 use IPayment\IPayment;
 
-abstract class Eating implements IEating, IPayment
+abstract class Human implements IEating, IPayment
 {
     private $name;
     private $sex;

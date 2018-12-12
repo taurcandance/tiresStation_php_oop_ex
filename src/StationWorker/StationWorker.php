@@ -3,9 +3,9 @@
 namespace StationWorker;
 
 
-use Human\Eating;
+use Human\Human;
 
-class StationWorker extends Eating
+class StationWorker extends Human
 {
     static private $workerContract = true;
     private $vehicleInWork = [];
