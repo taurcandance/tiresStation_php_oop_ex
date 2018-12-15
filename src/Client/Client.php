@@ -5,11 +5,13 @@ namespace Client;
 
 use Human\Human;
 use Vehicle\Vehicle;
+use Wallet\Wallet;
+
 
 class Client extends Human
 {
     public  $vehicle;
-    private $money;
+    private $wallet;
     private $replacementTires;
     private $numberCar;
 
@@ -26,27 +28,12 @@ class Client extends Human
     ) {
         parent::__construct($name, $sex, $age, $height, $weight);
         $this->vehicle          = $vehicle;
-        $this->money            = $money;
+        $this->wallet            = new Wallet($money);
         $this->replacementTires = $repTires;
         $this->numberCar        = $numberCar;
         $vehicle->setNumber($this->numberCar);
     }
 
-    /**
-     * Get Money.
-     *
-     * @param float $cost
-     *
-     * @return float
-     */
-    public function payCheck(float $cost): float
-    {
-        if (($this->money - $cost) > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public function pickUpTheCar()
     {
@@ -69,5 +56,17 @@ class Client extends Human
     public function getNumberCar(): string
     {
         return $this->numberCar;
+
+    }
+
+    /**
+     * @return float
+     */
+    public function getWallet(){
+        return $this->wallet->howMuch();
+    }
+
+    public function getPayment($money){
+        $this->wallet->del($money);
     }
 }

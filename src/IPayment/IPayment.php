@@ -5,6 +5,6 @@ namespace IPayment;
 
 interface IPayment
 {
-    public function payment($seller, $buyer, $cost, $product = null);
+    public function payment($buyer, $cost);
     public function checkPossibilityOfBuying($buyer, $cost);
 }

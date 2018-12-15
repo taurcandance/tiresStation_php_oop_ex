@@ -5,11 +5,17 @@ namespace StationEquipments;
 
 class StationEquipments
 {
-    private $isWorked = false;
+    private $isWorked;
+
+
+    public function __construct()
+    {
+        $this->isWorked = false;
+    }
 
     public function power()
     {
-        return ! $this->isWorked;
+        return $this->isWorked = true;
     }
 
     /**

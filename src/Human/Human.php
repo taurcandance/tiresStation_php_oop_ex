@@ -4,9 +4,9 @@ namespace Human;
 
 
 use IEating\IEating;
-use IPayment\IPayment;
 
-abstract class Human implements IEating, IPayment
+
+abstract class Human implements IEating
 {
     private $name;
     private $sex;
@@ -116,16 +116,4 @@ abstract class Human implements IEating, IPayment
     {
         return $this->energy;
     }
-
-    public function payment($seller, $buyer, $cost, $product = null)
-    {
-        // TODO: Implement payment() method.
-    }
-
-    public function checkPossibilityOfBuying($buyer, $cost)
-    {
-        // TODO: Implement checkPossibilityOfBuying() method.
-    }
-
-
 }
