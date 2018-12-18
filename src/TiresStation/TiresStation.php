@@ -19,21 +19,11 @@ class TiresStation
     private $cashier;
     private $equipments;
     private $moneyStorage;
-    private static $instance;
 
 
-    private function __construct()
+    function __construct()
     {
         $this->equipments = new StationEquipments();
-    }
-
-    public static function create()
-    {
-        if (empty(self::$instance)) {
-            return self::$instance = new TiresStation();
-        }
-
-        return self::$instance;
     }
 
     public function setStationlMoneyStorage(float $money)
@@ -46,7 +36,7 @@ class TiresStation
         $this->managers[] = $manager;
     }
 
-    public function setWorkers(StationWorker $worker)
+    public function setWorker(StationWorker $worker)
     {
         $this->workers[] = $worker;
     }

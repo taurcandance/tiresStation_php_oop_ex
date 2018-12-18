@@ -2,6 +2,7 @@
 require __DIR__.'/vendor/autoload.php';
 
 use Client\Client;
+use DoggyFarm\DoggyFarm;
 use StationCashier\StationCashier;
 use TiresStation\TiresStation;
 use Vehicle\Vehicle;
@@ -35,73 +36,10 @@ $tire5   = new Tire('belshina', 'winter', '215-60-18', 'gum', true, 10.2);
 $auto5   = new Vehicle('CITROEN', '205-60-16', 'yellow', $tire5);
 $client5 = new Client('Sergey', 'male', 55, 187.5, 98.5, $auto5, 4000, 'HB5526-4');
 
-//
-//$manager->createOrder($client1);
-//$manager->createOrder($client2);
-//$manager->createOrder($client3);
-//$manager->createOrder($client4);
-//$manager->createOrder($client5);
-//
-//
-//$manager->giveTaskToWorker($worker);
-//$manager->returnVehicleAfterRepairFromWorker($worker);
-//$manager->giveTaskToWorker($worker);
-//$manager->returnVehicleAfterRepairFromWorker($worker);
-//$manager->giveTaskToWorker($worker);
-//$manager->returnVehicleAfterRepairFromWorker($worker);
-//$manager->giveTaskToWorker($worker);
-//$manager->returnVehicleAfterRepairFromWorker($worker);
-//$manager->giveTaskToWorker($worker);
-//$manager->returnVehicleAfterRepairFromWorker($worker);
-//
-//$manager->returnVehicleToClients([$client1, $client2, $client3, $client4, $client5]);
-//
-//var_dump($manager);
-//var_dump($worker);
-//if ($client1->vehicle) {
-//    var_dump($client1->vehicle->getNumber());
-//} else {
-//    var_dump($client1->vehicle);
-//}
-//if ($client2->vehicle) {
-//    var_dump($client2->vehicle->getNumber());
-//} else {
-//    var_dump($client2->vehicle);
-//}
-//if ($client3->vehicle) {
-//    var_dump($client3->vehicle->getNumber());
-//} else {
-//    var_dump($client3->vehicle);
-//}
-//if ($client4->vehicle) {
-//    var_dump($client4->vehicle->getNumber());
-//} else {
-//    var_dump($client5->vehicle);
-//}
-//if ($client5->vehicle) {
-//    var_dump($client5->vehicle->getNumber());
-//} else {
-//    var_dump($client5->vehicle);
-//}
-//
-//echo 'time to eat<br />';
-//echo $client2->getName() . 'Energy =' . $client2->getEnergy() . '<br />';
-//echo $client3->getName() . 'Energy =' . $client3->getEnergy() . '<br />';
-//
-//$drinks = array('bananaJuice', 'orangeJuice', 'kiwiJuice');
-//$products = array('potatos','cucumber', 'tomato','carrot');
-//$dinnerRoom = new DinnerRoom($drinks, $products);
-//$dinnerRoom->cookFood();
-//$dinnerRoom->feed($client2);
-//$dinnerRoom->washAndClear($client3);
-//$dinnerRoom->giveADrink($client3);
-//
-//echo "{$client2->getName()} Energy = {$client2->getEnergy()} <br />";
-//echo "{$client3->getName()} Energy = {$client3->getEnergy()} <br />";
 
-$station = TiresStation::create();
+$station = new TiresStation();
 $station->setManager($manager);
-$station->setWorkers($worker);
+$station->setWorker($worker);
 $station->setCashier($cashier);
 $station->setStationlMoneyStorage(5967.5);
 $station->powerOn();
@@ -109,4 +47,3 @@ $station->doWork($client2,[1]);
 
 var_dump($station);
 var_dump($client2);
-
